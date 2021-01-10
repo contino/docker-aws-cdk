@@ -1,19 +1,21 @@
 # Docker AWS CDK
-Containerised AWS CDK to ensure consistent local development and simple CD pipelines.
+
+Containerised AWS CDK to ensure consistent local development and simple CD pipelines. To use the container refer to DockerHub repo [misva/aws-cdk](https://hub.docker.com/repository/docker/misva/aws-cdk).
 
 ## Usage
+
 Run as a command using `cdk` as entrypoint:
 
-    docker run --rm --entrypoint cdk contino/aws-cdk --version
+    docker run --rm --entrypoint cdk misva/aws-cdk --version
 
 Run as a shell and mount `.aws` folder and current directory as volumes:
 
-    docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/opt/app contino/aws-cdk bash
+    docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/opt/app misva/aws-cdk bash
 
 Using docker-compose:
 
     cdk:
-        image: contino/aws-cdk
+        image: misva/aws-cdk
         env_file: .env
         entrypoint: aws
         working_dir: /opt/app
@@ -50,18 +52,33 @@ Then, if you install e.g. `aws-cdk.core` through pip (`pip3 install aws-cdk.core
 in a container, you won't have to install it again next time you start a new
 container.
 
-### Java
+## Build
 
-> Not supported in this image yet
-
-## Build 
 Update the `AWS_CDK_VERSION` in both `Makefile` and `Dockerfile`. The run:
 
     make build
 
 Docker Hub will automatically trigger a new build.
 
-## Related Projects
+## Makefile
 
-- [docker-aws-cli](https://github.com/contino/docker-aws-cli)
-- [docker-terraform](https://github.com/contino/docker-terraform)
+Refer to Makefile help for provided utilities.
+
+```
+$ make
+help                           This help.
+build                          Build docker image
+publish                        Publish the `{version}` ans `latest` tagged containers to DockerHub
+publish-latest                 Publish the `latest` tagged container to DockerHub
+publish-version                Publish the `{version}` taged container to DockerHub
+run                            Run container on port configured in `config.env`
+tag                            Generate container tags for the `{version}` and `latest` tags
+tag-latest                     Generate container `{version}` tag
+tag-version                    Generate container `latest` tag
+test                           Test container with CDK version ${AWS_CDK_VERSION}
+```
+
+## Acknowledge
+
+* [Contino docker-aws-cdk](https://github.com/contino/docker-aws-cdk) repo for the fork
+* [M.Peter Makefile](https://gist.github.com/mpneuried/0594963ad38e68917ef189b4e6a269db) snippets for the hints on useful targets

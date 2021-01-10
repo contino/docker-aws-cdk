@@ -1,6 +1,6 @@
-FROM alpine:3.10
+FROM alpine:3.12.3
 
-ENV AWS_CDK_VERSION=1.67.0
+ENV AWS_CDK_VERSION=1.83.0
 
 RUN apk -v --no-cache --update add \
         nodejs \
