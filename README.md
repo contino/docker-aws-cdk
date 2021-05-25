@@ -61,6 +61,15 @@ Update the `AWS_CDK_VERSION` in both `Makefile` and `Dockerfile`. The run:
 
 Docker Hub will automatically trigger a new build.
 
+## Updates
+
+To update this container with a newer version of the AWS CDK:
+
+1. Update the Dockerfile with the new AWS CDK version number
+2. Update the Dockerfile with a new Alpine container version (if applicable)
+3. Update the Makefile with the new AWS CDK version number
+4. Submit pull request and get approved
+
 ## Related Projects
 
 - [docker-aws-cli](https://github.com/contino/docker-aws-cli)
