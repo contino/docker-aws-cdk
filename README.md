@@ -27,7 +27,7 @@ And run `docker-compose run cdk --version`
 
 CDK Supports different languages to define your (re)usable assets.
 
-### JavaScrip/TypeScript
+### JavaScript/TypeScript
 
 This should work out of the box through `package.json` and `node_modules`, which
 are automatically _cached_ in your working directory.
