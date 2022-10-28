@@ -1,5 +1,5 @@
 ARG ALPINE_VERSION=3.13
-ARG AWS_CDK_VERSION=1.105.0
+ARG AWS_CDK_VERSION=2.49.0
 FROM alpine:${ALPINE_VERSION}
 
 RUN apk -v --no-cache --update add \
